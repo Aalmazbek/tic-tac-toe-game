@@ -49,6 +49,10 @@ const Board = () => {
     let empty = [null, null, null, null, null, null, null, null, null]
     setSquares(empty)
     setXIsNext(true)
+
+    for(let i = 0; i <= 7; i++){
+      document.querySelector('.line-through-' + i).classList.remove('crossed-' + i)
+    }
   }
   
 
@@ -85,6 +89,16 @@ const Board = () => {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />      
         <hr className='horizontal'/>
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />      
+
+        <hr className='line-through-0'/>
+        <hr className='line-through-1'/>
+        <hr className='line-through-2'/>
+        <hr className='line-through-3'/>
+        <hr className='line-through-4'/>
+        <hr className='line-through-5'/>
+        <hr className='line-through-6'/>
+        <hr className='line-through-7'/>
+        <hr className='line-through-8'/>
       </div>
       <StartButton hide={hide} onStartButtonClick={startAgain} />
     </div>
@@ -108,6 +122,21 @@ function calculateWinner(squares){
     const [a, b, c] = lines[i]
 
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      // if (i < 3) {
+      //   document.querySelector('.line-through-' + i).style.transition = "0.5s"
+      //   document.querySelector('.line-through-' + i).style.width = "90%"
+      // } else if(i < 6){
+      //   document.querySelector('.line-through-' + i).style.transition = "0.5s"
+      //   document.querySelector('.line-through-' + i).style.height = "90%"
+      // } else{
+      //   document.querySelector('.line-through-' + i).style.transition = "0.5s"
+      //   document.querySelector('.line-through-' + i).style.left = "-5%"
+      //   document.querySelector('.line-through-' + i).style.top = "49%"
+      //   document.querySelector('.line-through-' + i).style.width = "110%"
+      // }
+
+      document.querySelector('.line-through-' + i).classList.add('crossed-' + i)
+
       return squares[a]
     }
   }
