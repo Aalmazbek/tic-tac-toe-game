@@ -5,6 +5,10 @@
   outline: none;
 }
 
+button{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 .hide{
   display: none!important;
 }
